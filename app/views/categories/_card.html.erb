@@ -1,0 +1,14 @@
+<div class="md:mx-2 my-2 rounded-lg shadow-lg bg-white w-96 flex" style="max-width: 90%;height: 150px;">
+    <img class="rounded-lg h-24 w-28" src="https://i.imgur.com/bLeYnye.png" style="margin-top:auto;margin-bottom:auto"/>
+    <div class="px-4">
+      <h5 class="mt-4 text-gray-700 text-xl font-medium mb-2"><%= category.name %></h5>
+      <p class="text-gray-600 text-sm mb-4">
+        <%= category.description %>
+        <%= truncate(category.description, :length => 15) %>
+      </p>
+      <p class="text-gray-400 text-xs mb-4">
+        Total transactions: 
+        <%= category.transactions.count %>
+      </p>
+    </div>
+</div>

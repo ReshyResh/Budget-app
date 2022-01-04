@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'categories#index'
+  devise_scope :user do
+    get '/sign-in' => "devise/sessions#new", :as => :login
+  end
   resources :categories, only: [:index, :new, :show, :create, :destroy] do
     resources :transactions, only: [:create, :destroy]
   end
