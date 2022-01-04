@@ -1,34 +1,109 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+<% if notice %>
+  <div class="bg-yellow-100 rounded-lg py-5 px-6 text-base mb-3 flex justify-center" style="color: rgb(161 98 7);" role="alert"><%= notice %></div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+<% if alert %>
+  <div class="bg-red-100 rounded-lg py-5 px-6 text-base mb-3 flex justify-center" style="color: rgb(185 28 28);" role="alert"><%= alert %></div>
+<% end %>
+<% if resource.errors.any? %>
+  <div class="bg-red-100 rounded-lg py-5 px-6 text-base mb-3 flex justify-center" style="color: rgb(185 28 28);" role="alert"><%= render "devise/shared/error_messages", resource: resource %></div>
+<% end %>
+<div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto mt-60" style=" margin-top: 15rem;">
+<h1 class="mx-auto text-center mb-24">Register a new account</h1>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="form-group mb-6">
+      <%= f.label :name, class: "form-label inline-block mb-2 text-gray-700" %><br />
+      <%= f.text_field :name, autofocus: true, required: true, placeholder: "Enter name", class: "form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+    </div>
+    <div class="form-group mb-6">
+      <%= f.label :email, class: "form-label inline-block mb-2 text-gray-700" %><br />
+      <%= f.email_field :email, required: true, autocomplete: "email", placeholder: "Enter email address", class: "form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+    </div>
+    <div class="form-group mb-6">
+      <%= f.label :password, class: "form-label inline-block mb-2 text-gray-700" %><br />
+      <% if @minimum_password_length %>
+        <p class="text-sm text-gray-500 mb-1">(<%= @minimum_password_length %> characters minimum)</p>
+      <% end %>
+      <%= f.password_field :password, required: true, placeholder: "Enter password", class: "form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+    </div>
+    <div class="form-group mb-6">
+      <%= f.label :password_confirmation, class: "form-label inline-block mb-2 text-gray-700" %><br />
+      <%= f.password_field :password_confirmation, required: true, placeholder: "Confirm password", class: "form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+    </div>
+    <%= f.submit "Register", class: "w-full
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-m
+      leading-tight
+      rounded-full
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out
+      cursor-pointer" %>
+    <p class="text-gray-800 mt-6 text-center">
+    <%= link_to "Back to Login", new_session_path(resource_name), class: "text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"%><br />
+    </p>
+  <% end %>
+</div>

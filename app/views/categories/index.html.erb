@@ -1,1 +1,26 @@
-<h1> Main page </h1>
+<div class="flex flex-col md:flex-row justify-center flex-wrap" style="align-items: center;">
+<% @categories.each do |category| %>
+    <%= render 'card',category: category %>
+<% end %>
+</div>
+<div class="fixed h-full w-full flex items-center justify-center">
+    <div id="login-card"
+        class="w-56 h-80 text-center rounded-lg"
+    ><button type="button" class="px-6
+      py-2.5
+      bg-teal
+      opacity-75
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      rounded-full
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      transition
+      duration-150
+      ease-in-out" data-bs-toggle="modal" data-bs-target="#modal" style="background-color:#20c997;">
+        Add new category
+    </button></div>
+</div>
+<%= render 'modal' %>
