@@ -1,0 +1,106 @@
+<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="modal" tabindex="-1">
+  <div class="modal-dialog relative w-auto pointer-events-none mt-40">
+    <div
+      class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+      <div
+        class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+        <h5 class="text-xl font-medium leading-normal text-gray-800 text-center w-full">New transaction</h5>
+        <button type="button"
+          class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+          data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body relative p-4">
+        <%= form_with path: "/categories/#{@category.id}/transactions}", method: :post do |f| %>
+        <div class="form-group mb-6">
+          <%= f.label :name, class: "form-label inline-block mb-2 text-gray-500 text-sm font-bold" %><br />
+          <%= f.text_field :name, autofocus: true, required: true, placeholder: "Enter name", :maxlength => 70,class: "form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded-lg
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+        </div>
+        <div class="form-group mb-6">
+          <%= f.label :transaction_number, class: "form-label inline-block mb-2 text-gray-500 text-sm font-bold" %><br />
+          <%= f.text_field :transaction_number, required: true, placeholder: "Enter transaction number", :maxlength => 8, class: "form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded-lg
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+        </div>
+        <div class="form-group mb-6">
+          <%= f.label :total, class: "form-label inline-block mb-2 text-gray-500 text-sm font-bold" %><br />
+          <%= f.text_field :total, required: true, placeholder: "Enter total amount", :maxlength => 8, class: "form-control
+            block
+            w-50
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded-lg
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" %>
+        </div>
+      
+      <div
+        class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end pt-4 border-t border-gray-200 rounded-b-md">
+        <button type="button" class="px-6
+          mr-3
+          py-2.5
+          bg-red-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          rounded-full
+          shadow-md
+          hover:bg-red-800 hover:shadow-lg
+          transition
+          duration-150
+          ease-in-out" data-bs-dismiss="modal">Close</button>
+        <%= f.submit "Add transaction", class: "px-6
+          py-2.5
+          bg-green-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          rounded-full
+          shadow-md
+          hover:bg-green-700 hover:shadow-lg
+          transition
+          duration-150
+          ease-in-out
+          cursor-pointer" %>
+          <% end %>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

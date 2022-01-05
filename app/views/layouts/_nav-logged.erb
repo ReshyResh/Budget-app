@@ -7,71 +7,31 @@
   py-4
   bg-gray-100
   text-gray-500
-  hover:text-gray-700
   focus:text-gray-700
   shadow-lg
-  navbar navbar-expand-lg navbar-light
-  ">
+  h-20
+  " style="background-color: rgba(64, 75, 81, 0.5);">
   <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
-  <button class="
-      navbar-toggler
-      text-gray-500
-      border-0
-      hover:shadow-none hover:no-underline
-      py-2
-      px-2.5
-      bg-transparent
-      focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
-    " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
-    class="w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-    <path fill="currentColor"
-      d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
-    </path>
-  </svg>
-  </button>
   <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
-  <a class="
-        flex
-        items-center
-        text-gray-900
-        hover:text-gray-900
-        focus:text-gray-900
-        mt-2
-        lg:mt-0
-        mr-1
-      " href="#">
-    <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" style="height: 15px" alt=""
-      loading="lazy" />
-  </a>
-  <!-- Left links -->
-  <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-    <li class="nav-item p-2">
-      <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Dashboard</a>
-    </li>
-    <li class="nav-item p-2">
-      <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Team</a>
-    </li>
-    <li class="nav-item p-2">
-      <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Projects</a>
-    </li>
-  </ul>
-  <!-- Left links -->
   </div>
-  <!-- Collapsible wrapper -->
-
-  <!-- Right elements -->
+  <div >
+  <% if current_page?(root_path) %>
+    <p style="font-family: 'Pacifico', cursive;" class=" text-3xl text-gray-300">Budget saver</p>  <% else %>
+    <%= link_to root_path do %>
+      <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="white" clip-rule="evenodd"><path d="M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z"/></svg>
+    <% end%>
+  <% end %>
+  </div>
   <div class="flex items-center relative">
-  <!-- Icon -->
   <div class="dropdown relative">
     <a class="
           text-gray-500
-          hover:text-gray-700
-          focus:text-gray-700
+          hover:text-white
+          focus:text-white
           mr-4
           dropdown-toggle
           hidden-arrow
+          transition
           flex items-center
         " href="#" id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell"
@@ -81,7 +41,7 @@
           d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z">
         </path>
       </svg>
-      <% if notice %>
+      <% if notice || alert %>
         <span class="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">*</span>
       <% end %>
     </a>
@@ -100,7 +60,6 @@
       rounded-lg
       shadow-lg
       mt-1
-      hidden
       m-0
       bg-clip-padding
       border-none
@@ -121,9 +80,8 @@
           text-gray-700
           hover:bg-gray-100
         " href="#">
-          <% if notice %>
+          <% if notice || alert %>
             <%= notice %>
-          <% elsif alert %>
             <%= alert %>
           <% else %>
             Nothing to see here
@@ -135,14 +93,13 @@
   <div class="dropdown relative">
     <a class="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"
+      <img src="https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg" class="rounded-full"
         style="height: 25px; width: 25px" alt="" loading="lazy" />
     </a>
     <ul class="
     dropdown-menu
     min-w-max
     absolute
-    hidden
     bg-white
     text-base
     z-50
@@ -161,23 +118,50 @@
     right-0
   " aria-labelledby="dropdownMenuButton2">
       <li>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "
-        dropdown-item
-        text-sm
-        py-2
-        px-4
-        font-normal
-        block
-        w-full
-        whitespace-nowrap
-        bg-transparent
-        text-gray-700
-        hover:bg-gray-100
-      " %>
+      <div class="flex items-center w-full justify-center">
+      <div class="max-w-xs">
+          <div class="bg-white shadow-xl rounded-lg py-3">
+              <div class="photo-wrapper p-2">
+                  <img class="w-16 h-16 rounded-full mx-auto" src="https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg" alt="John Doe">
+              </div>
+              <div class="p-2">
+                  <h3 class="text-center text-xl text-gray-900 font-medium leading-8"><%= current_user.name %></h3>
+                  <table class="text-xs my-3">
+                      <tbody><tr>
+                          <td class="px-2 py-2 text-gray-500 font-semibold">Number of categories:</td>
+                          <td class="px-2 py-2"><%= current_user.number_of_categories %></td>
+                      </tr>
+                      <tr>
+                          <td class="px-2 py-2 text-gray-500 font-semibold">Total amount spent: </td>
+                          <td class="px-2 py-2"><%= @sum %>$</td>
+                      </tr>
+                      <tr>
+                          <td class="px-2 py-2 text-gray-500 font-semibold">Email</td>
+                          <td class="px-2 py-2"><%= current_user.email %></td>
+                      </tr>
+                  </tbody></table>
+                  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "
+                    dropdown-item
+                    text-sm
+                    w-full
+                    text-center
+                    bg-red-700
+                    py-2
+                    rounded-full
+                    px-4
+                    font-normal
+                    block
+                    whitespace-nowrap
+                    text-white
+                    hover:bg-red-900
+                  ", style: "max-width: 80%;margin: auto;"%>
+              </div>
+          </div>
+      </div>
+      </div>
       </li>
     </ul>
   </div>
   </div>
-  <!-- Right elements -->
   </div>
 </nav>

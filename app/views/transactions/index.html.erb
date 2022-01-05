@@ -1,0 +1,96 @@
+<h1 class=" font-bold text-2xl text-center my-2 py-2"><%= @category.name %> - Transactions </h1>
+<% if @category.transactions.empty? %>
+    <div class="w-full h-full justify-center flex flex-col">
+    <h2 class="text-4xl mx-auto mt-44 max-w-md text-center pb-44">You have no transaction here!<br />
+    <p class="text-xl mt-4 text-gray-500"> Try adding some using the green button! </p></h2>
+    </div>
+<% else %>
+<h2 class=" text-white text-md mt-2 text-center bg-gray-500 w-60 m-auto rounded-full h-6 font-bold">Total spendings: <span class="text-green-400 font-bold"><%= @category.total %>$</span></h2>
+
+    <% @category.transactions.order('created_at DESC').each do |transaction| %>
+        <%= render 'trans-card',transaction: transaction %>
+    <% end %>
+<% end %>
+    <div class="fixed 
+                bottom-10
+                left-5
+                flex
+                flex-col-reverse
+                ">
+        <button type="button" class="px-6
+            py-2.5
+            bg-green-400
+            text-white
+            font-medium
+            text-xs
+            leading-tight
+            rounded-full
+            shadow-md
+            hover:bg-green-700 hover:shadow-lg
+            transition
+            duration-150
+            group
+            ease-in-out" data-bs-toggle="modal" data-bs-target="#modal">
+            <span class="absolute
+                        left-24
+                        w-40
+                        h-auto leading-loose
+                        text-center
+                        bg-gray-900
+                        text-white
+                        font-small
+                        text-sm 
+                        font-bold
+                        rounded-md
+                        shadow-md
+                        transition
+                        duration-150
+                        transform
+                        origin-left
+                        scale-0
+                        group-hover:scale-100
+                        ease-in-out">Add transaction </span>    
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="black"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>
+        </button>
+        <%= link_to "/categories/#{@category.id}", remote: true, method: :delete do %>
+                <button type="button" class="px-6
+                    py-2.5
+                    mb-4
+                    bg-red-600
+                    text-white
+                    font-medium
+                    text-xs
+                    leading-tight
+                    rounded-full
+                    shadow-md
+                    hover:bg-red-800 hover:shadow-lg
+                    transition
+                    duration-150
+                    ease-in-out
+                    group">
+                    <span class="absolute
+                        left-24
+                        w-40
+                        h-auto leading-loose
+                        text-center
+                        bg-gray-900
+                        text-white
+                        font-small
+                        text-sm
+                        font-bold
+                        transform
+                        origin-left
+                        rounded-md
+                        shadow-md
+                        transition
+                        duration-150
+                        scale-0
+                        group-hover:scale-100
+                        ease-in-out">Delete category </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-12v-2h12v2z"/></svg>
+                </button>
+        <% end %>
+    </div>    
+        
+<%= render 'modal' %>
+
