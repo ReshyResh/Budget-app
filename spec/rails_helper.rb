@@ -7,6 +7,29 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 # Login helper for feature testing
+def login_user
+  @user = User.create(
+    name: 'John Smith',
+    email: 'correct@email.com',
+    password: 'correctpassword'
+  )
+  @category = Category.create(
+    user_id: @user.id,
+    name: 'General spendings',
+    description: 'Random text',
+    picture: 1
+  )
+  @transaction = Transaction.create(
+    name: 'New car',
+    transaction_number: 123_456,
+    total: 35_000,
+    category_id: @category.id
+  )
+  visit user_session_path
+  fill_in 'Email', with: 'correct@email.com'
+  fill_in 'Password', with: 'correctpassword'
+  click_button 'Log in'
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
