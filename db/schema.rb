@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_133421) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.integer "picture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
