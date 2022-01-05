@@ -14,3 +14,68 @@
  *= require_self
  */
 
+ body {
+    background-color: rgb(31, 41, 55); /* cool gray 800 */
+    color: white;
+}
+
+.pic-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
+.pic1{background-image:url(https://i.imgur.com/sKwbkdN.jpg);}
+.pic2{background-image:url(https://i.imgur.com/1UNY0xg.jpg);}
+.pic3{background-image:url(https://i.imgur.com/I8Yj87X.jpg);}
+.pic4{background-image:url(https://i.imgur.com/lLxP0uK.jpg);}
+.pic5{background-image:url(https://i.imgur.com/60lSpty.jpg);}
+.pic6{background-image:url(https://i.imgur.com/ThssQVL.jpg);}
+.pic7{background-image:url(https://i.imgur.com/QykuYg7.jpg);}
+.pic8{background-image:url(https://i.imgur.com/hn7TTvo.jpg);}
+
+.pic1-thin{background-image:url(https://i.imgur.com/mNXykDu.png);}
+.pic2-thin{background-image:url(https://i.imgur.com/XkjmeQp.png);}
+.pic3-thin{background-image:url(https://i.imgur.com/twWXAI9.png);}
+.pic4-thin{background-image:url(https://i.imgur.com/9A87G66.png);}
+.pic5-thin{background-image:url(https://i.imgur.com/EKiGM9b.png);}
+.pic6-thin{background-image:url(https://i.imgur.com/0zAxTXi.png);}
+.pic7-thin{background-image:url(https://i.imgur.com/KWOzfhy.png);}
+.pic8-thin{background-image:url(https://i.imgur.com/OcmSvLK.png);}
+
+.pic-selector-2 input:active +.pic-light, .pic-selector input:active +.pic-light{opacity: .9;}
+.pic-selector-2 input:checked +.pic-light, .pic-selector input:checked +.pic-light{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.pic-light{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.pic-light:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
