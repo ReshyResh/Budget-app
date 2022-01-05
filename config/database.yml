@@ -16,7 +16,7 @@
 #
 default: &default
   adapter: postgresql
-  encoding: WIN1252
+  encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -24,8 +24,6 @@ default: &default
 development:
   <<: *default
   database: budget_app_development
-  username: test
-  password: password
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -60,8 +58,6 @@ development:
 test:
   <<: *default
   database: budget_app_test
-  username: test
-  password: password
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
