@@ -5,4 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, :email, presence: true
   has_many :categories, dependent: :destroy
+  has_many :transactions, dependent: :destroy
+
+  def number_of_categories
+    categories.count
+  end
+
+  def total
+    categories.transactions.all.count
+  end
 end

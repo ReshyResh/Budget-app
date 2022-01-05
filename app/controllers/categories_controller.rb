@@ -1,31 +1,39 @@
 class CategoriesController < ApplicationController
-    def index
-        unless user_signed_in?
-            redirect_to login_path
-        end
-        if user_signed_in?
-            @categories = current_user.categories.includes(:transactions).all
-        end
-    end
+  def index
+    redirect_to users_path unless user_signed_in?
+    return unless user_signed_in?
 
-    def create
+    @categories = current_user.categories.includes(:transactions).all
+    @sum = @categories.sum(:total)
+  end
+
+  def create
     @category = current_user.categories.new(create_params)
     respond_to do |format|
       format.html do
         if @category.save
           flash[:notice] = 'Category was successfully added.'
         else
-          flash[:alert] = "Failed to save category - #{@food.errors.full_messages.first}"
+          flash[:alert] = "Failed to save category - #{@category.errors.full_messages.first}"
         end
         redirect_to root_path
       end
     end
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    if @category.destroy
+      flash[:notice] = 'Category deleted!'
+    else
+      flash[:alert] = "Failed to remove category - #{@category.errors.full_messages.first}"
+    end
+    redirect_to root_path
+  end
+
   private
 
   def create_params
-    params.permit(:name, :description)
+    params.permit(:name, :description, :picture)
   end
-
 end
