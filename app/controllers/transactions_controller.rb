@@ -15,11 +15,7 @@ class TransactionsController < ApplicationController
 
   def create
     @category = Category.find(params[:category_id])
-    @transaction = @category.transactions.new(
-      name: params[:name],
-      transaction_number: params[:transaction_number],
-      total: params[:total]
-    )
+    @transaction = @category.transactions.new(create_params)
     respond_to do |format|
       format.html do
         if @transaction.save
@@ -40,5 +36,11 @@ class TransactionsController < ApplicationController
       flash[:alert] = "Failed to remove Transaction - #{@transaction.errors.full_messages.first}"
     end
     redirect_to category_transactions_path(params[:category_id])
+  end
+
+  private
+
+  def create_params
+    params.permit(:name, :transaction_number, :total)
   end
 end
