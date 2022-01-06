@@ -1,7 +1,10 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-    purge: [],
+    purge: {
+        enabled:true,
+        content:['./*.erb', './**/*.erb'],
+    },
     darkMode: false, // or 'media' or 'class'
     theme: {},
     variants: {

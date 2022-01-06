@@ -4,8 +4,8 @@
       <div class="px-4 w-full">
         <h5 class="mt-4 text-xl font-medium mb-2"><%= category.name %></h5>
         <p class="text-sm mb-4">
-          <% if category.description.length >= 50 %>
-            <%= category.description[0...50]+"..." %>
+          <% if category.description.length >= 30 %>
+            <%= category.description[0...30]+"..." %>
           <% else %>
             <%= category.description %>
           <% end %>
